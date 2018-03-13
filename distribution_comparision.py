@@ -117,7 +117,7 @@ if __name__ == "__main__":
     fig.savefig('figures/data_hist.pdf', dpi=300)
 
 
-    data = pd.read_csv('college.csv')
+    data = pd.read_csv('college.csv') #data can be downloaded from https://collegescorecard.ed.gov/data/
     plt.close('all')
     fig, ax = plt.subplots(figsize=(6,4))
     bins = np.arange(-.1, 1.1, 0.03)
