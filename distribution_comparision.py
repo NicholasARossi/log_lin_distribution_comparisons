@@ -117,4 +117,76 @@ if __name__ == "__main__":
     fig.savefig('figures/data_hist.pdf', dpi=300)
 
 
+    data = pd.read_csv('college.csv')
+    plt.close('all')
+    fig, ax = plt.subplots(figsize=(6,4))
+    bins = np.arange(-.1, 1.1, 0.03)
+
+    A = data['ADM_RATE_ALL'].values
+
+    probs, bons = np.histogram(A[~np.isnan(A)], normed=0, bins=bins)
+
+    ax.plot(bons[1:], probs, drawstyle='steps-pre')
+    # ax.hist(A[~np.isnan(A)],bins=bins,edgecolor='white')
+    ax.set_xlabel('Acceptance Rate')
+    ax.set_ylabel('Number of Schools')
+    ax.set_title('Distribution of US Undergraduate Acceptance Rates')
     # fig
+    # ax.set_xscale('log')
+
+    fig.savefig("figures/acceptance.pdf", dpi=300)
+
+
+
+    plt.close('all')
+    fig, ax = plt.subplots(figsize=(6,4))
+    # bins = np.logspace(-1.5, 0.2, 50)
+    bins = np.arange(-.1, 1.1, 0.03)
+
+    A = data['ADM_RATE_ALL'].values
+
+    probs, bons = np.histogram(A[~np.isnan(A)], normed=0, bins=bins)
+
+    ax.plot(bons[1:], probs, drawstyle='steps-pre')
+    # ax.hist(A[~np.isnan(A)],bins=bins,edgecolor='white')
+    ax.set_xlabel('Acceptance Rate')
+    ax.set_ylabel('Number of Schools')
+    ax.set_title('Distribution of US Undergraduate Acceptance Rates')
+    # fig
+    ax.set_xscale('log')
+
+    fig.savefig("figures/log_acceptance.pdf", dpi=300)
+    fig
+
+    plt.close('all')
+    fig, ax = plt.subplots(figsize=(6,4))
+
+    #hardcoded firmd data from
+    sizes = np.asarray([0, 2832845, 1019909, 605354, 379912, 117232, 64955, 19586, 9664, 5923, 2285, 1291, 1370])
+
+    bins = np.asarray([1, 5, 10, 20, 50, 100, 250, 500, 1000, 2500, 5000, 10000, 12000])
+
+    ax.plot(bins, sizes, drawstyle='steps-pre')
+    # ax.set_xscale('log')
+
+    ax.set_xlabel('Number of Employees')
+    ax.set_ylabel('Number of US Firms')
+    ax.set_title('Distribution of US Firms')
+    fig.savefig("figures/firm.pdf", dpi=300)
+
+
+    plt.close('all')
+    fig, ax = plt.subplots(figsize=(6,4))
+
+    #hardcoded firmd data from
+    sizes = np.asarray([0, 2832845, 1019909, 605354, 379912, 117232, 64955, 19586, 9664, 5923, 2285, 1291, 1370])
+
+    bins = np.asarray([1, 5, 10, 20, 50, 100, 250, 500, 1000, 2500, 5000, 10000, 12000])
+
+    ax.plot(bins, sizes, drawstyle='steps-pre')
+    ax.set_xscale('log')
+
+    ax.set_xlabel('Number of Employees')
+    ax.set_ylabel('Number of US Firms')
+    ax.set_title('Distribution of US Firms')
+    fig.savefig("figures/log_firm.pdf", dpi=300)
